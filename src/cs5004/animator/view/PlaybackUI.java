@@ -30,15 +30,15 @@ public class PlaybackUI extends JPanel {
   }
 
   private void createButtons() {
-    play = new JButton();
+    play = new JButton("play");
     play.setActionCommand("play");
-    pause = new JButton();
+    pause = new JButton("pause");
     pause.setActionCommand("pause");
-    rewind = new JButton();
+    rewind = new JButton("rewind");
     rewind.setActionCommand("rewind");
-    faster = new JButton();
+    faster = new JButton("faster");
     faster.setActionCommand("faster");
-    slower = new JButton();
+    slower = new JButton("slower");
     slower.setActionCommand("slower");
     loop = new JButton("loop");
     loop.setActionCommand("loop");
