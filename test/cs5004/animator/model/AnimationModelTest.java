@@ -3,6 +3,8 @@ package cs5004.animator.model;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.InvalidClassException;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
@@ -491,7 +493,7 @@ public class AnimationModelTest {
 
   /** Test the getFrameAtTick() method for an AnimationModelImpl. */
   @Test
-  public void getFrameAtTick() {
+  public void getFrameAtTick() throws InvalidClassException {
     model.addShapeToLog(r);
     model.addShapeToFrames(r, 0, 99);
     model.addShapeToLog(c);

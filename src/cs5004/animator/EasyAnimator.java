@@ -98,7 +98,6 @@ public final class EasyAnimator {
     AnimationView view = viewFactory(viewType);
 
     if (viewType.equals("playback")) {
-      //TODO: play the Playback view which allows for user input
       CompositeFrame viewFrame = new CompositeFrame(model.getEventLog(), speed);
       AnimationController controller = new AnimationControllerImpl(model, viewFrame);
       viewFrame.setListener(controller);

@@ -7,8 +7,8 @@ import javax.swing.JFrame;
  * This will be used to call GraphicsView through.
  */
 public class MyFrame extends JFrame {
-  GraphicsView graphicsDemo;
-  GraphicsView graphicsView = new GraphicsView();
+  private GraphicsView graphicsDemo;
+  private GraphicsView graphicsView = new GraphicsView();
 
   /**
    * Constructor of the frame to animate in.

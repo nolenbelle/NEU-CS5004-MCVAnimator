@@ -9,7 +9,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-import javax.swing.*;
+import javax.swing.Timer;
+import javax.swing.JPanel;
 
 import cs5004.animator.model.Circle;
 import cs5004.animator.model.Rectangle;

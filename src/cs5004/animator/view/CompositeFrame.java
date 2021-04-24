@@ -8,15 +8,13 @@ import cs5004.animator.controller.AnimationController;
 
 /**
  * JFrame class to contain the composite view PlaybackView & PlaybackUI.
- *
- * We could also maybe add this all into myFrame?
  */
 public class CompositeFrame extends JFrame {
-  private PlaybackView view; // can't be AnimationView interface type bc we need it to be a JPanel
+  // can't be AnimationView interface type bc we need it to be a JPanel
+  // further design discussion of playback view being accessed at it's specific level given
+  // the jav doc for the getPayback method
+  private PlaybackView view;
   private PlaybackUI ui; // the options for the user
-  private JList<ButtonEvent> buttonList; // gotten from the UI -> these are the possible buttons
-  private ButtonEvent[] buttons = {ButtonEvent.PLAY, ButtonEvent.PAUSE, ButtonEvent.FASTER,
-  ButtonEvent.SLOWER, ButtonEvent.LOOP};
 
   /**
    * Constructor of the frame to animate in.
@@ -35,30 +33,31 @@ public class CompositeFrame extends JFrame {
     this.add(container);
   }
 
-  public void clickButton(String button) {
-    if (button.equals("play")) {
-      ui.clickPlay();
-    }
-    if (button.equals("pause")) {
-      ui.clickPause();
-    }
-    if (button.equals("loop")) {
-      ui.clickLoop();
-    }
-    if (button.equals("faster")) {
-      ui.clickPlay();
-    }
-    if (button.equals("slower")) {
-      ui.clickPause();
-    }
-    if (button.equals("rewind")) { // restart
-      ui.clickLoop();
-      //view.restart();
-
-    }
-  }
-
+  /**
+   * Sets the controller as the listener for the button clicks.
+   * @param controller the controller
+   */
   public void setListener(AnimationController controller) {
     ui.setListener(controller);
+  }
+
+  /**
+   * Gets the UI component so the controller can have it call it's own methods.
+   * @return the buttons ui
+   */
+  public PlaybackUI getUI() {
+    return ui;
+  }
+
+  /**
+   * Gets the playback view specifically. Ideally it would just get whatever view the controller
+   * was using but the controller is pretty coupled to this frame. If we wanted to change that,
+   * we could have set the PlayBack view to it's own interface instead of forcing it to be under
+   * the giant same AnimationView interface, but having it under the super interface was
+   * beneficial for other reasons so that was our trade off.
+   * @return the playback view
+   */
+  public PlaybackView getPlayback() { // this is a place of not great coupling
+    return view;
   }
 }

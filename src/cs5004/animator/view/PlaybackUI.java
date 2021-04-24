@@ -1,9 +1,12 @@
 package cs5004.animator.view;
 
-import java.awt.*;
+import java.awt.Dimension;
 import java.awt.event.ActionListener;
 
-import javax.swing.*;
+import javax.swing.JPanel;
+import javax.swing.JButton;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 
 import cs5004.animator.controller.AnimationController;
 
