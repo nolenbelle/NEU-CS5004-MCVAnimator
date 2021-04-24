@@ -81,7 +81,7 @@ public class GraphicsView extends JPanel implements AnimationView {
 
   @Override
   public void paintComponents(List<String> eventLog, int time, String outPut) throws IOException {
-    throw new UnsupportedOperationException ("This method is not meant for this implementation.");
+    throw new UnsupportedOperationException("This method is not meant for this implementation.");
   }
 
   /**
