@@ -4,9 +4,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import cs5004.animator.model.AnimationModel;
-import cs5004.animator.view.AnimationView;
 import cs5004.animator.view.CompositeFrame;
 import cs5004.animator.view.PlaybackUI;
+import cs5004.animator.view.PlaybackView;
 
 /**
  * The implementation of our AnimationController which is effectively a listener for the view.
@@ -31,25 +31,29 @@ public class AnimationControllerImpl implements ActionListener, AnimationControl
   public void actionPerformed(ActionEvent e) {
     // listening to the buttons from PlaybackUI which is shown in CompositeFrame
     PlaybackUI ui = viewFrame.getUI();
-    AnimationView view = viewFrame.getPlayback();
+    PlaybackView view = viewFrame.getPlayback();
 
     if (e.getActionCommand().equals("play")) {
       ui.clickPlay();
+      view.play();
     }
     if (e.getActionCommand().equals("pause")) {
       ui.clickPause();
+      view.pause();
     }
     if (e.getActionCommand().equals("loop")) {
       ui.clickLoop();
+      view.loop(viewFrame);
     }
     if (e.getActionCommand().equals("faster")) {
-
+      view.faster();
     }
     if (e.getActionCommand().equals("slower")) {
-
+      view.slower();
     }
     if (e.getActionCommand().equals("rewind")) { // restart
-
+      view.rewind();
+      viewFrame.dispose();
     }
   }
 }

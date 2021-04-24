@@ -12,11 +12,9 @@ import cs5004.animator.controller.AnimationController;
  * JFrame class to contain the composite view PlaybackView & PlaybackUI.
  */
 public class CompositeFrame extends JFrame {
-  // can't be AnimationView interface type bc we need it to be a JPanel
-  // further design discussion of playback view being accessed at it's specific level given
-  // the jav doc for the getPayback method
-  private PlaybackView view;
+  private PlaybackView view; // can't be AnimationView interface type bc we need it to be a JPanel
   private PlaybackUI ui; // the options for the user
+  private int speed;
 
   /**
    * Constructor of the frame to animate in.
@@ -24,10 +22,13 @@ public class CompositeFrame extends JFrame {
    * @param speed speed of play
    */
   public CompositeFrame(List<String> eventLog, int speed) {
+    this.speed = 1000;
+    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     JPanel container = new JPanel();
     container.setLayout(new BoxLayout(container, BoxLayout.Y_AXIS)); // stack  our panels
-    view = new PlaybackView(); // call however we need to call the new view
+    view = new PlaybackView(eventLog, speed); // call however we need to call the new view
     ui = new PlaybackUI();
+
 
     container.add(view); // top
     container.add(ui); // bottom
