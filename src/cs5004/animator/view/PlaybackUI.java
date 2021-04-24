@@ -1,5 +1,6 @@
 package cs5004.animator.view;
 
+import java.awt.*;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
@@ -23,24 +24,78 @@ public class PlaybackUI extends JPanel {
   private JButton faster;
   private JButton slower;
   private JButton loop;
+  private int loopStatus;
+  private int playStatus;
 
   public PlaybackUI(){
+    loopStatus = 0;
+    playStatus = 1;
     this.createButtons();
     this.addButtons();
   }
 
+  public void clickLoop(){
+    Icon loopON = new ImageIcon("resources/loopON.jpg");
+    Icon loopOFF = new ImageIcon("resources/loopOFF.jpg");
+    if (loopStatus == 0) { // loop is off
+      loop.setIcon(loopON);
+      loopStatus = 1;
+    }
+    else { // loop is on
+      loop.setIcon(loopOFF);
+      loopStatus = 0;
+    }
+  }
+
+  public void clickPlay(){
+    Icon playON = new ImageIcon("resources/playON.jpg");
+    Icon pauseOFF = new ImageIcon("resources/pauseOFF.jpg");
+    if (playStatus == 0) { // play is off ie it is paused
+      play.setIcon(playON);
+      playStatus = 1;
+      pause.setIcon(pauseOFF); //toggle
+    } // do nothing if already playing.
+  }
+
+  public void clickPause(){
+    Icon pauseON = new ImageIcon("resources/pauseON.jpg");
+    Icon playOFF = new ImageIcon("resources/playOFF.jpg");
+    if (playStatus == 1) { // play is on ie it is playing
+      pause.setIcon(pauseON);
+      playStatus = 0;
+      play.setIcon(playOFF);
+    } // do nothing if already paused
+  }
+
   private void createButtons() {
-    play = new JButton("play");
-    play.setActionCommand("play");
-    pause = new JButton("pause");
-    pause.setActionCommand("pause");
-    rewind = new JButton("rewind");
+    Icon rewindI = new ImageIcon("resources/restart.jpg");
+    rewind = new JButton(rewindI);
+    rewind.setPreferredSize(new Dimension(100,100));
     rewind.setActionCommand("rewind");
-    faster = new JButton("faster");
-    faster.setActionCommand("faster");
-    slower = new JButton("slower");
+
+    Icon slowerI = new ImageIcon("resources/slower.jpg");
+    slower = new JButton(slowerI);
+    slower.setPreferredSize(new Dimension(100,100));
     slower.setActionCommand("slower");
-    loop = new JButton("loop");
+
+    Icon pauseI = new ImageIcon("resources/pauseOFF.jpg");
+    pause = new JButton(pauseI);
+    pause.setPreferredSize(new Dimension(100,100));
+    pause.setActionCommand("pause");
+
+    Icon playI = new ImageIcon("resources/playON.jpg");
+    play = new JButton(playI);
+    play.setPreferredSize(new Dimension(100,100));
+    play.setActionCommand("play");
+
+    Icon fasterI = new ImageIcon("resources/faster.jpg");
+    faster = new JButton(fasterI);
+    faster.setPreferredSize(new Dimension(100,100));
+    faster.setActionCommand("faster");
+
+    Icon loopI = new ImageIcon("resources/loopOFF.jpg");
+    loop = new JButton(loopI);
+    loop.setPreferredSize(new Dimension(100,100));
     loop.setActionCommand("loop");
   }
 
@@ -54,11 +109,11 @@ public class PlaybackUI extends JPanel {
   }
 
   private void addButtons() {
-    this.add(play);
-    this.add(pause);
     this.add(rewind);
-    this.add(faster);
     this.add(slower);
+    this.add(pause);
+    this.add(play);
+    this.add(faster);
     this.add(loop);
   }
 }

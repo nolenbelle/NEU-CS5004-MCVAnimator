@@ -19,23 +19,6 @@ public class AnimationControllerImpl implements ActionListener, AnimationControl
   @Override
   public void actionPerformed(ActionEvent e) {
     // listening to the buttons from PlaybackUI which is shown in CompositeFrame
-    if (e.getActionCommand() == "play") {
-      //System.out.println("play");
-    }
-    if (e.getActionCommand() == "pause") {
-      //System.out.println("pause");
-    }
-    if (e.getActionCommand() == "rewind") {
-      //System.out.println("rewind");
-    }
-    if (e.getActionCommand() == "faster") {
-      //System.out.println("faster");
-    }
-    if (e.getActionCommand() == "slower") {
-      //System.out.println("slower");
-    }
-     else if (e.getActionCommand() == "loop") {
-      //System.out.println("loop");
-    }
+    viewFrame.clickButton(e.getActionCommand());
   }
 }

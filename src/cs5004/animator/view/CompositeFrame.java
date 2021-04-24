@@ -35,6 +35,29 @@ public class CompositeFrame extends JFrame {
     this.add(container);
   }
 
+  public void clickButton(String button) {
+    if (button.equals("play")) {
+      ui.clickPlay();
+    }
+    if (button.equals("pause")) {
+      ui.clickPause();
+    }
+    if (button.equals("loop")) {
+      ui.clickLoop();
+    }
+    if (button.equals("faster")) {
+      ui.clickPlay();
+    }
+    if (button.equals("slower")) {
+      ui.clickPause();
+    }
+    if (button.equals("rewind")) { // restart
+      ui.clickLoop();
+      //view.restart();
+
+    }
+  }
+
   public void setListener(AnimationController controller) {
     ui.setListener(controller);
   }
