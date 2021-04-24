@@ -44,9 +44,13 @@ public final class EasyAnimator {
     }
     if (type.equals("svg")) {
       return new SVGView();
-    } else {
-      return new TextualView();
     }
+    else {return new TextualView();}
+    /*if (type.equals("text")){
+      return new TextualView();
+    } else {
+      throw new IllegalArgumentException("None valid view type.");
+    }*/
   }
 
   /**
@@ -110,7 +114,7 @@ public final class EasyAnimator {
     if (viewType.equals("visual")) {
       // play the JFrames visual
       new MyFrame(1000, 1000, model.getEventLog(), speed);
-    } else { // that the SVG & textual frames
+    } else if (viewType.equals("text")) { // that the SVG & textual frames
       view.paintComponents(model.getEventLog(), speed, output);
     }
   }

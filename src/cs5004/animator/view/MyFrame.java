@@ -1,5 +1,6 @@
 package cs5004.animator.view;
 
+import java.awt.*;
 import java.util.List;
 import javax.swing.JFrame;
 
@@ -17,19 +18,18 @@ public class MyFrame extends JFrame {
    * @param speed speed of play
    */
   public MyFrame(int width, int height, List<String> eventLog, int speed) {
-    this.setSize(width,height);
+    this.setSize(width, height);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     GraphicsView graphicsDemo = new GraphicsView(eventLog, speed);
     this.add(graphicsDemo);
     this.setVisible(true);
-
   }
 
   /**
    * Default constructor.
    */
   public MyFrame() {
-    this.setSize(840,840);
+    this.setSize(new Dimension(800,800));
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.add(graphicsView);
     this.setVisible(true);

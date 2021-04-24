@@ -5,6 +5,7 @@ import cs5004.animator.controller.AnimationControllerImpl;
 import cs5004.animator.model.AnimationModel;
 import cs5004.animator.model.AnimationModelImpl;
 import cs5004.animator.model.Circle;
+import cs5004.animator.model.Ellipse;
 import cs5004.animator.model.Rectangle;
 import cs5004.animator.model.Shape;
 import java.awt.Graphics;
@@ -186,7 +187,8 @@ public class PlaybackView extends JPanel implements AnimationView {
               int oldY = shape.getYCoordinate();
               int newX = getEventX(ev);
               int newY = getEventY(ev);
-              if (shape.getClass().equals(Rectangle.class)) {
+              if (shape.getClass().equals(Rectangle.class)
+                      || shape.getClass().equals(Ellipse.class)) {
                 // if (shape.getClass().equals(Rectangle.class)) {
                 moveRectangle(
                         shape,
@@ -216,7 +218,8 @@ public class PlaybackView extends JPanel implements AnimationView {
               int newR = getEventR(ev);
               int newG = getEventG(ev);
               int newB = getEventB(ev);
-              if (shape.getClass().equals(Rectangle.class)) {
+              if (shape.getClass().equals(Rectangle.class)
+                      || shape.getClass().equals(Ellipse.class)) {
                 // if (shape.getClass().equals(Rectangle.class)) {
                 changeColorRectangle(
                         shape,
@@ -247,7 +250,8 @@ public class PlaybackView extends JPanel implements AnimationView {
             if (ev.contains("width")) {
               int oldW = shape.getWidth();
               int newW = getEventWidth(ev);
-              if (shape.getClass().equals(Rectangle.class)) {
+              if (shape.getClass().equals(Rectangle.class)
+                      || shape.getClass().equals(Ellipse.class)) {
                 changeWidthRectangle(
                         shape, oldW, newW, getEventStartTime(ev), getEventEndTime(ev), time);
               } else if (shape.getClass().equals(Circle.class)) {
@@ -259,7 +263,8 @@ public class PlaybackView extends JPanel implements AnimationView {
             if (ev.contains("height")) {
               int oldH = shape.getHeight();
               int newH = getEventHeight(ev);
-              if (shape.getClass().equals(Rectangle.class)) {
+              if (shape.getClass().equals(Rectangle.class)
+                      || shape.getClass().equals(Ellipse.class)) {
                 changeHeightRectangle(
                         shape, oldH, newH, getEventStartTime(ev), getEventEndTime(ev), time);
               } else if (shape.getClass().equals(Circle.class)) {
@@ -296,19 +301,35 @@ public class PlaybackView extends JPanel implements AnimationView {
           Shape shape, int oldX, int oldY, int newX, int newY, double start, double end, double time) {
     double nextX = tweening((double) oldX, (double) newX, start, end, time);
     double nextY = tweening((double) oldY, (double) newY, start, end, time);
-    Rectangle r =
-            new Rectangle(
-                    (int) nextX,
-                    (int) nextY,
-                    shape.getWidth(),
-                    shape.getHeight(),
-                    shape.getColor()[0],
-                    shape.getColor()[1],
-                    shape.getColor()[2],
-                    shape.getDescriptor());
+    if (shape.getClass().equals(Rectangle.class)) {
+      Rectangle r =
+              new Rectangle(
+                      (int) nextX,
+                      (int) nextY,
+                      shape.getWidth(),
+                      shape.getHeight(),
+                      shape.getColor()[0],
+                      shape.getColor()[1],
+                      shape.getColor()[2],
+                      shape.getDescriptor());
+      nameToShape.put(shape.getDescriptor(), r);
+    }
+    else {
+      Ellipse e =
+              new Ellipse(
+                      (int) nextX,
+                      (int) nextY,
+                      shape.getWidth(),
+                      shape.getHeight(),
+                      shape.getColor()[0],
+                      shape.getColor()[1],
+                      shape.getColor()[2],
+                      shape.getDescriptor());
+      nameToShape.put(shape.getDescriptor(), e);
+    }
     // System.out.println("\t" + nameToShape.get(shape.getDescriptor()));
     // System.out.println();
-    nameToShape.put(shape.getDescriptor(), r);
+
     // System.out.println("\t" + nameToShape.get(shape.getDescriptor()));
     repaint();
   }
@@ -373,17 +394,40 @@ public class PlaybackView extends JPanel implements AnimationView {
     double nextR = tweening((double) oldR, (double) newR, start, end, time);
     double nextG = tweening((double) oldG, (double) newG, start, end, time);
     double nextB = tweening((double) oldB, (double) newB, start, end, time);
-    Rectangle r =
-            new Rectangle(
-                    shape.getXCoordinate(),
-                    shape.getYCoordinate(),
-                    shape.getWidth(),
-                    shape.getHeight(),
-                    (int) nextR,
-                    (int) nextG,
-                    (int) nextB,
-                    shape.getDescriptor());
-    nameToShape.put(shape.getDescriptor(), r);
+    if (nextR > 255) {
+      nextR = 255;
+    }
+    if (nextG > 255) {
+      nextG = 255;
+    }
+    if (nextB > 255) {
+      nextB = 255;
+    }
+    if (shape.getClass().equals(Rectangle.class)) {
+      Rectangle r =
+              new Rectangle(
+                      shape.getXCoordinate(),
+                      shape.getYCoordinate(),
+                      shape.getWidth(),
+                      shape.getHeight(),
+                      (int) nextR,
+                      (int) nextG,
+                      (int) nextB,
+                      shape.getDescriptor());
+      nameToShape.put(shape.getDescriptor(), r);
+    } else if (shape.getClass().equals(Ellipse.class)) {
+      Ellipse e =
+              new Ellipse(
+                      shape.getXCoordinate(),
+                      shape.getYCoordinate(),
+                      shape.getWidth(),
+                      shape.getHeight(),
+                      (int) nextR,
+                      (int) nextG,
+                      (int) nextB,
+                      shape.getDescriptor());
+      nameToShape.put(shape.getDescriptor(), e);
+    }
     repaint();
   }
 
@@ -416,6 +460,15 @@ public class PlaybackView extends JPanel implements AnimationView {
     double nextR = tweening((double) oldR, (double) newR, start, end, time);
     double nextG = tweening((double) oldG, (double) newG, start, end, time);
     double nextB = tweening((double) oldB, (double) newB, start, end, time);
+    if (nextR > 255) {
+      nextR = 255;
+    }
+    if (nextG > 255) {
+      nextG = 255;
+    }
+    if (nextB > 255) {
+      nextB = 255;
+    }
     Circle c =
             new Circle(
                     shape.getXCoordinate(),
@@ -443,17 +496,31 @@ public class PlaybackView extends JPanel implements AnimationView {
   protected void changeWidthRectangle(Shape shape, int oldW, int newW, double start, double end,
                                       double time) {
     double nextW = tweening((double) oldW, (double) newW, start, end, time);
-    Rectangle r =
-            new Rectangle(
-                    shape.getXCoordinate(),
-                    shape.getYCoordinate(),
-                    (int) nextW,
-                    shape.getHeight(),
-                    shape.getColor()[0],
-                    shape.getColor()[1],
-                    shape.getColor()[2],
-                    shape.getDescriptor());
-    nameToShape.put(shape.getDescriptor(), r);
+    if (shape.getClass().equals(Rectangle.class)) {
+      Rectangle r =
+              new Rectangle(
+                      shape.getXCoordinate(),
+                      shape.getYCoordinate(),
+                      (int) nextW,
+                      shape.getHeight(),
+                      shape.getColor()[0],
+                      shape.getColor()[1],
+                      shape.getColor()[2],
+                      shape.getDescriptor());
+      nameToShape.put(shape.getDescriptor(), r);
+    } else if (shape.getClass().equals(Ellipse.class)) {
+      Ellipse e =
+              new Ellipse(
+                      shape.getXCoordinate(),
+                      shape.getYCoordinate(),
+                      (int) nextW,
+                      shape.getHeight(),
+                      shape.getColor()[0],
+                      shape.getColor()[1],
+                      shape.getColor()[2],
+                      shape.getDescriptor());
+      nameToShape.put(shape.getDescriptor(), e);
+    }
     repaint();
   }
 
@@ -471,17 +538,31 @@ public class PlaybackView extends JPanel implements AnimationView {
   protected void changeHeightRectangle(
           Shape shape, int oldH, int newH, double start, double end, double time) {
     double nextH = tweening((double) oldH, (double) newH, start, end, time);
-    Rectangle r =
-            new Rectangle(
-                    shape.getXCoordinate(),
-                    shape.getYCoordinate(),
-                    (int) nextH,
-                    shape.getHeight(),
-                    shape.getColor()[0],
-                    shape.getColor()[1],
-                    shape.getColor()[2],
-                    shape.getDescriptor());
-    nameToShape.put(shape.getDescriptor(), r);
+    if (shape.getClass().equals(Rectangle.class)) {
+      Rectangle r =
+              new Rectangle(
+                      shape.getXCoordinate(),
+                      shape.getYCoordinate(),
+                      (int) nextH,
+                      shape.getHeight(),
+                      shape.getColor()[0],
+                      shape.getColor()[1],
+                      shape.getColor()[2],
+                      shape.getDescriptor());
+      nameToShape.put(shape.getDescriptor(), r);
+    } else if (shape.getClass().equals(Ellipse.class)) {
+      Ellipse e =
+              new Ellipse(
+                      shape.getXCoordinate(),
+                      shape.getYCoordinate(),
+                      (int) nextH,
+                      shape.getHeight(),
+                      shape.getColor()[0],
+                      shape.getColor()[1],
+                      shape.getColor()[2],
+                      shape.getDescriptor());
+      nameToShape.put(shape.getDescriptor(), e);
+    }
     repaint();
   }
 
@@ -902,12 +983,12 @@ public class PlaybackView extends JPanel implements AnimationView {
    * @return Current value in the tweening progression.
    */
   protected double tweening(double from, double to, double start, double end, double t) {
-    if (from == 0) {
+    /*if (from == 0) {
       from = 1;
     }
     if (to == 0) {
       to = 1;
-    }
+    }*/
     double tween = (from * ((end - t) / (end - start))) + (to * ((t - start) / (end - start)));
 
     if (tween < 0) {
