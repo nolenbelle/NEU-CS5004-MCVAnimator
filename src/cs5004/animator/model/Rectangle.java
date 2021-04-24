@@ -2,7 +2,7 @@ package cs5004.animator.model;
 
 /** Represent a Rectangle. A specific form of an AbstractShape. */
 public class Rectangle extends AbstractShape {
-  private final String type = "rectangle";
+  private String type = "rectangle";
 
   /**
    * Construct a Rectangle using an x/y point on the Rectangle, the width of the Rectangle, the
@@ -28,6 +28,30 @@ public class Rectangle extends AbstractShape {
    */
   public Rectangle(String descriptor) {
     super(descriptor);
+  }
+
+  public String getType(){
+    return this.type;
+  }
+
+  /**
+   * Create a copy of a Shape.
+   *
+   * @return Copy of this Shape.
+   */
+  @Override
+  public Shape copy() {
+    Shape copy =
+        new Rectangle(
+            super.getXCoordinate(),
+            super.getYCoordinate(),
+            super.getWidth(),
+            super.getHeight(),
+            super.getColor()[0],
+            super.getColor()[1],
+            super.getColor()[2],
+            super.getDescriptor());
+    return copy;
   }
 
   /**

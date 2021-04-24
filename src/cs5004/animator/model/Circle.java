@@ -3,6 +3,7 @@ package cs5004.animator.model;
 /** Represent a Circle. A specific form of an AbstractShape. */
 public class Circle extends AbstractShape {
 
+
   /**
    * Construct a Circle using an x/y point on the Circle, the diameter of the Circle, the RGB color
    * of the Circle, and a unique descriptor of the Circle.
@@ -17,6 +18,25 @@ public class Circle extends AbstractShape {
    */
   public Circle(int x, int y, int diameter, int r, int g, int b, String descriptor) {
     super(x, y, diameter, diameter, r, g, b, descriptor);
+  }
+
+  /**
+   * Create a copy of a Shape.
+   *
+   * @return Copy of this Shape.
+   */
+  @Override
+  public Shape copy() {
+    Shape copy =
+        new Circle(
+            super.getXCoordinate(),
+            super.getYCoordinate(),
+            super.getWidth(),
+            super.getColor()[0],
+            super.getColor()[1],
+            super.getColor()[2],
+            super.getDescriptor());
+    return copy;
   }
 
   /**
@@ -35,5 +55,10 @@ public class Circle extends AbstractShape {
         this.getColor()[0],
         this.getColor()[1],
         this.getColor()[2]);
+  }
+
+  @Override
+  public String getType() {
+    return "circle";
   }
 }

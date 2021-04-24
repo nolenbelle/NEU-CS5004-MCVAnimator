@@ -110,5 +110,5 @@ public interface Shape {
 
   String getType();
 
-  void setType(String type);
+  //void setType(String type);
 }

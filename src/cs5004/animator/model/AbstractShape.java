@@ -1,7 +1,7 @@
 package cs5004.animator.model;
 
 /** Represents any Shape that may be present in a Frame. */
-public class AbstractShape implements Shape {
+public abstract class AbstractShape implements Shape {
 
   private String descriptor;
   private int[] color = new int[3]; // [RED , GREEN , BLUE])
@@ -9,7 +9,7 @@ public class AbstractShape implements Shape {
   private int y; // y-coordinate of the center point of shape
   private int width;
   private int height;
-  private String type;
+  //private String type;
 
   /**
    * Construct an AbstractShape using a given point located on the Shape, the width of the Shape,
@@ -57,13 +57,13 @@ public class AbstractShape implements Shape {
     this.height = -1;
     this.color = new int[]{-1, -1, -1};
   }
-
-  public String getType() {
-    return type;
-  }
-  public void setType(String type) {
-    this.type = type;
-  }
+//
+//  public String getType() {
+//    return type;
+//  }
+//  public void setType(String type) {
+//    this.type = type;
+//  }
 
   /**
    * Set the location of the shape using x/y coordinates.
@@ -179,26 +179,6 @@ public class AbstractShape implements Shape {
   @Override
   public String getDescriptor() {
     return this.descriptor;
-  }
-
-  /**
-   * Create a copy of a Shape.
-   *
-   * @return Copy of this Shape.
-   */
-  @Override
-  public Shape copy() {
-    Shape copy =
-        new AbstractShape(
-            this.x,
-            this.y,
-            this.width,
-            this.height,
-            this.color[0],
-            this.color[1],
-            this.color[2],
-            this.descriptor);
-    return copy;
   }
 
   @Override
