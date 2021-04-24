@@ -30,14 +30,20 @@ public class PlaybackUI extends JPanel {
   private int loopStatus;
   private int playStatus;
 
-  public PlaybackUI(){
+  /**
+   * Constructor for the UI which creates and adds all the buttons.
+   */
+  public PlaybackUI() {
     loopStatus = 0;
     playStatus = 1;
     this.createButtons();
     this.addButtons();
   }
 
-  public void clickLoop(){
+  /**
+   * The visual response to be called when the loop is clicked.
+   */
+  public void clickLoop() {
     Icon loopON = new ImageIcon("resources/loopON.jpg");
     Icon loopOFF = new ImageIcon("resources/loopOFF.jpg");
     if (loopStatus == 0) { // loop is off
@@ -50,7 +56,10 @@ public class PlaybackUI extends JPanel {
     }
   }
 
-  public void clickPlay(){
+  /**
+   * The visual response to be called when the play is clicked.
+   */
+  public void clickPlay() {
     Icon playON = new ImageIcon("resources/playON.jpg");
     Icon pauseOFF = new ImageIcon("resources/pauseOFF.jpg");
     if (playStatus == 0) { // play is off ie it is paused
@@ -60,7 +69,10 @@ public class PlaybackUI extends JPanel {
     } // do nothing if already playing.
   }
 
-  public void clickPause(){
+  /**
+   * The visual response to be called when the pause is clicked.
+   */
+  public void clickPause() {
     Icon pauseON = new ImageIcon("resources/pauseON.jpg");
     Icon playOFF = new ImageIcon("resources/playOFF.jpg");
     if (playStatus == 1) { // play is on ie it is playing
@@ -70,6 +82,9 @@ public class PlaybackUI extends JPanel {
     } // do nothing if already paused
   }
 
+  /**
+   * Creates the buttons.
+   */
   private void createButtons() {
     Icon rewindI = new ImageIcon("resources/restart.jpg");
     rewind = new JButton(rewindI);
@@ -102,6 +117,10 @@ public class PlaybackUI extends JPanel {
     loop.setActionCommand("loop");
   }
 
+  /**
+   * Sets the controller as the listener for all of the buttons.
+   * @param controller the controller of the project
+   */
   public void setListener(AnimationController controller) {
     play.addActionListener((ActionListener) controller);
     pause.addActionListener((ActionListener) controller);
@@ -111,6 +130,9 @@ public class PlaybackUI extends JPanel {
     loop.addActionListener((ActionListener) controller);
   }
 
+  /**
+   * Adds the buttons.
+   */
   private void addButtons() {
     this.add(rewind);
     this.add(slower);

@@ -2,7 +2,9 @@ package cs5004.animator.view;
 
 import java.util.List;
 
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.BoxLayout;
 
 import cs5004.animator.controller.AnimationController;
 

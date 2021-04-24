@@ -7,7 +7,6 @@ import javax.swing.JFrame;
  * This will be used to call GraphicsView through.
  */
 public class MyFrame extends JFrame {
-  private GraphicsView graphicsDemo;
   private GraphicsView graphicsView = new GraphicsView();
 
   /**
@@ -20,7 +19,7 @@ public class MyFrame extends JFrame {
   public MyFrame(int width, int height, List<String> eventLog, int speed) {
     this.setSize(width,height);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    graphicsDemo = new GraphicsView(eventLog, speed);
+    GraphicsView graphicsDemo = new GraphicsView(eventLog, speed);
     this.add(graphicsDemo);
     this.setVisible(true);
 

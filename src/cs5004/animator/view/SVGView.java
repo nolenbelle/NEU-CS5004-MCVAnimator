@@ -338,17 +338,13 @@ public class SVGView implements AnimationView {
             attribute, from, to);
   }
 
-  /*
-  Ideally, we would come back and make a better handling of the difference
-  in interface implementations
-   */
   @Override
   public void paintComponent(Graphics g) {
-    throw new UnsupportedOperationException ("This method is not meant for this implementation.");
+    throw new UnsupportedOperationException("This method is not meant for this implementation.");
   }
 
   @Override
   public void actionPerformed(ActionEvent e) {
-    throw new UnsupportedOperationException ("This method is not meant for this implementation.");
+    throw new UnsupportedOperationException("This method is not meant for this implementation.");
   }
 }

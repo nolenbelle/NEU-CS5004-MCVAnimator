@@ -15,8 +15,8 @@ import cs5004.animator.view.PlaybackUI;
  * do in response to each button.
  */
 public class AnimationControllerImpl implements ActionListener, AnimationController {
-  private CompositeFrame viewFrame; // can't be the interface type
-  private AnimationModel model;
+  private CompositeFrame viewFrame;
+  // the view is initiated with the model data which we justified in our HW7
 
   /**
    * Constructor for the controller which takes the model and the view.
@@ -25,7 +25,6 @@ public class AnimationControllerImpl implements ActionListener, AnimationControl
    */
   public AnimationControllerImpl(AnimationModel model, CompositeFrame view) {
     viewFrame = view;
-    this.model = model;
   }
 
   @Override

@@ -47,11 +47,11 @@ public class TextualView implements AnimationView {
 
   @Override
   public void actionPerformed(ActionEvent e) {
-    throw new UnsupportedOperationException ("This method is not meant for this implementation.");
+    throw new UnsupportedOperationException("This method is not meant for this implementation.");
   }
 
   @Override
   public void paintComponent(Graphics g) {
-    throw new UnsupportedOperationException ("This method is not meant for this implementation.");
+    throw new UnsupportedOperationException("This method is not meant for this implementation.");
   }
 }

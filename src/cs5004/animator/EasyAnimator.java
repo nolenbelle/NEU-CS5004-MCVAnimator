@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import javax.swing.*;
+import javax.swing.JFrame;
 
 import cs5004.animator.controller.AnimationController;
 import cs5004.animator.controller.AnimationControllerImpl;
