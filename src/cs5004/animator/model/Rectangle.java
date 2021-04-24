@@ -2,6 +2,7 @@ package cs5004.animator.model;
 
 /** Represent a Rectangle. A specific form of an AbstractShape. */
 public class Rectangle extends AbstractShape {
+  private final String type = "rectangle";
 
   /**
    * Construct a Rectangle using an x/y point on the Rectangle, the width of the Rectangle, the

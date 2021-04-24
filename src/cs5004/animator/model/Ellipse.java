@@ -2,6 +2,7 @@ package cs5004.animator.model;
 
 /** Represent an Ellipse. A specific form of an AbstractShape. */
 public class Ellipse extends AbstractShape {
+  private final String type = "ellipse";
 
   /**
    * Construct a Ellipse using an x/y point on the Rectangle, the width of the Rectangle, the
@@ -19,6 +20,7 @@ public class Ellipse extends AbstractShape {
    */
   public Ellipse(int x, int y, int width, int height, int r, int g, int b, String descriptor) {
     super(x, y, width, height, r, g, b, descriptor);
+    super.setType("ellipse");
   }
 
   /**

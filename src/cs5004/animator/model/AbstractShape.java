@@ -9,6 +9,7 @@ public class AbstractShape implements Shape {
   private int y; // y-coordinate of the center point of shape
   private int width;
   private int height;
+  private String type;
 
   /**
    * Construct an AbstractShape using a given point located on the Shape, the width of the Shape,
@@ -55,6 +56,13 @@ public class AbstractShape implements Shape {
     this.width = -1;
     this.height = -1;
     this.color = new int[]{-1, -1, -1};
+  }
+
+  public String getType() {
+    return type;
+  }
+  public void setType(String type) {
+    this.type = type;
   }
 
   /**

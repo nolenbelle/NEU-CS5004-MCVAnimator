@@ -13,7 +13,7 @@ public class GraphicsDemo {
    * @param args the user args from the command line
    * @throws IOException if things went wrong with the file
    */
-  public static void main(String[] args) throws IOException {
+  /*public static void main(String[] args) throws IOException {
     AnimationModel movie = new AnimationModelImpl();
     movie.setCanvas(0,0,1000,1000);
     Rectangle rect = new Rectangle(1,1,100,100,0,0,0,"rect");
@@ -29,6 +29,6 @@ public class GraphicsDemo {
     movie.changeHeight(circ, circ.getHeight(),300,1,5);
     movie.changeWidth(circ,circ.getWidth(),300,1,5);
 
-    MyFrame myFrame = new MyFrame(1000,1000, movie.getEventLog(), 1);
-  }
+    MyFrame myFrame = new MyFrame(movie.getEventLog(), 1);
+  }*/
 }

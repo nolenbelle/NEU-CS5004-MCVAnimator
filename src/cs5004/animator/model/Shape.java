@@ -107,4 +107,8 @@ public interface Shape {
    * @param width width value
    */
   void initializeShape(int x, int y, int r, int g, int b, int height, int width);
+
+  String getType();
+
+  void setType(String type);
 }

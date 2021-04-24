@@ -25,9 +25,8 @@ import cs5004.animator.model.Shape;
 public class GraphicsView extends JPanel implements AnimationView {
   private List<String> shapes = new ArrayList<>();
   private List<String> events = new ArrayList<>();
-  // private List<Shape> shapeList = new ArrayList<>();
   private Map<String, Shape> nameToShape = new HashMap<>();
-  Timer timer;// = new Timer(1000, this);
+  private Timer timer;
   private int time = 0;
 
   /**
@@ -40,8 +39,7 @@ public class GraphicsView extends JPanel implements AnimationView {
   public GraphicsView(List<String> eventLog, int speed) {
     timer = new Timer(speed, this);
     this.parseEventLog(eventLog);
-    System.out.println(eventLog.toString());
-
+    //System.out.println(eventLog.toString());
     this.setLayout(null);
     timer.start();
   }
@@ -63,7 +61,7 @@ public class GraphicsView extends JPanel implements AnimationView {
   @Override
   public void paintComponent(Graphics g) {
     super.paintComponent(g);
-    this.setBackground(new Color(50, 255, 255));
+    //this.setBackground(new Color(50, 255, 255));
 
     Graphics2D g2d = (Graphics2D) g;
 
@@ -73,7 +71,7 @@ public class GraphicsView extends JPanel implements AnimationView {
         g2d.fillRect(
             shape.getXCoordinate(), shape.getYCoordinate(), shape.getWidth(), shape.getHeight());
       }
-      if (shape.getClass().equals(Circle.class)) {
+      if (shape.getClass().equals(Ellipse.class)) {
         g2d.setColor(new Color(shape.getColor()[0], shape.getColor()[1], shape.getColor()[2]));
         g2d.fillOval(
             shape.getXCoordinate(), shape.getYCoordinate(), shape.getWidth(), shape.getHeight());
@@ -99,10 +97,10 @@ public class GraphicsView extends JPanel implements AnimationView {
     for (int i = 0; i < events.size(); i++) {
       String ev = events.get(i);
       int end = getEventEndTime(ev);
-      if (time <= end) {
+      if (time <= end) { // if the event takes place in this frame
         // System.out.println("DO THIS - " + ev);
         for (Shape shape : nameToShape.values()) {
-          if (shape.getDescriptor().equals(getEventShapeName(ev))) {
+          if (shape.getDescriptor().equals(getEventShapeName(ev))) { //if we are changing this shape
             // System.out.println(shape);
             if (ev.contains("moved")) {
               int oldX = shape.getXCoordinate();

@@ -143,7 +143,7 @@ public class SVGView implements AnimationView {
    * Add a shape to the animation.
    * @param shape the string shape to add
    */
-  private void addShape(String shape) {
+  public void addShape(String shape) {
     // strip the needed starting data from the string
     Scanner scanner = new Scanner(shape);
 
@@ -210,7 +210,7 @@ public class SVGView implements AnimationView {
    * Add an event to the animation.
    * @param item the string event to be added
    */
-  private void addEvent(String item) {
+  public void addEvent(String item) {
     Scanner event = new Scanner(item);
     String id = event.next();
     int idIndex = this.shapeID.indexOf(id);
@@ -303,7 +303,7 @@ public class SVGView implements AnimationView {
    * @param fromData from coordinates
    * @param toData to coordinates
    */
-  private void addMove(int idIndex, int t1, int duration, String fromData, String toData) {
+  public void addMove(int idIndex, int t1, int duration, String fromData, String toData) {
     // now get the values in integer forms
     Scanner pointS = new Scanner(fromData).useDelimiter(",");
     String x1 = pointS.next().substring(1);
@@ -331,7 +331,7 @@ public class SVGView implements AnimationView {
    * @param to ending value
    * @return String of the animation
    */
-  private String addAnimation(int t1, int duration, String attribute, String from, String to) {
+  public String addAnimation(int t1, int duration, String attribute, String from, String to) {
     return String.format("<animate attributeType=\"xml\" "
             + "begin=\"%dms\" dur=\"%dms\" attributeName=\"%s\" "
             + "from=\"%s\" to=\"%s\" fill=\"freeze\" />", t1, duration,

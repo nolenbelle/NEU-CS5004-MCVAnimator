@@ -43,6 +43,7 @@ public final class EasyAnimator {
       return new PlaybackView();
     }
     if (type.equals("svg")) {
+      //System.out.println("svg passed");
       return new SVGView();
     }
     else {return new TextualView();}
@@ -113,8 +114,8 @@ public final class EasyAnimator {
     }
     if (viewType.equals("visual")) {
       // play the JFrames visual
-      new MyFrame(1000, 1000, model.getEventLog(), speed);
-    } else if (viewType.equals("text")) { // that the SVG & textual frames
+      new MyFrame(model.getEventLog(), speed, model.getFrames());
+    } if (viewType.equals("text") || viewType.equals("svg")) { // that the SVG & textual frames
       view.paintComponents(model.getEventLog(), speed, output);
     }
   }
