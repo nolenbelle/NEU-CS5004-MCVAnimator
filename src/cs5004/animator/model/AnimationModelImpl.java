@@ -167,6 +167,8 @@ public class AnimationModelImpl implements AnimationModel {
   public void changeColor(Shape shape, int r1, int g1, int b1, int r2, int g2, int b2,
                           int fromFrame, int toFrame)
           throws IllegalArgumentException {
+    System.out.println(String.format("Color change on %s from (%d,%d,%d) to (%d,%d,%d) from %d-%d",
+            shape.getDescriptor(), r1,g1,b1,r2,g2,b2,fromFrame,toFrame));
     if (r1 < 0 || g1 < 0 || b1 < 0 || r1 > 255 || g1 > 255 || b1 > 255
             || r2 < 0 || g2 < 0 || b2 < 0 || r2 > 255 || g2 > 255 || b2 > 255) {
       throw new IllegalArgumentException("All r,g,b values must be at least 0 and at most 255.");

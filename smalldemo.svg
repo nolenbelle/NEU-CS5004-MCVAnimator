@@ -2,20 +2,20 @@
      xmlns="http://www.w3.org/2000/svg">
 
 <rect id="R" x="200" y="200" width="50" height="100" fill="rgb(255,0,0)" visibility="visible" >
-    <animate attributeType="xml" begin="10000ms" dur="40000ms" attributeName="y" from="200" to="300" fill="freeze" />
-    <animate attributeType="xml" begin="10000ms" dur="40000ms" attributeName="x" from="200" to="300" fill="freeze" />
-    <animate attributeType="xml" begin="51000ms" dur="19000ms" attributeName="width" from="50" to="25" fill="freeze" />
-    <animate attributeType="xml" begin="70000ms" dur="30000ms" attributeName="y" from="300" to="200" fill="freeze" />
-    <animate attributeType="xml" begin="70000ms" dur="30000ms" attributeName="x" from="300" to="200" fill="freeze" />
+    <animate attributeType="xml" begin="3333ms" dur="13333ms" attributeName="y" from="200" to="300" fill="freeze" />
+    <animate attributeType="xml" begin="3333ms" dur="13333ms" attributeName="x" from="200" to="300" fill="freeze" />
+    <animate attributeType="xml" begin="17000ms" dur="6333ms" attributeName="width" from="50" to="25" fill="freeze" />
+    <animate attributeType="xml" begin="23333ms" dur="10000ms" attributeName="y" from="300" to="200" fill="freeze" />
+    <animate attributeType="xml" begin="23333ms" dur="10000ms" attributeName="x" from="300" to="200" fill="freeze" />
 </rect>
 
 <ellipse id="C" cx="440" cy="70" rx="120" ry="60" fill="rgb(0,0,255)" visibility="visible" >
-    <animate attributeType="xml" begin="20000ms" dur="30000ms" attributeName="y" from="70" to="250" fill="freeze" />
-    <animate attributeType="xml" begin="20000ms" dur="30000ms" attributeName="x" from="440" to="440" fill="freeze" />
-    <animate attributeType="xml" begin="50000ms" dur="20000ms" attributeName="y" from="250" to="370" fill="freeze" />
-    <animate attributeType="xml" begin="50000ms" dur="20000ms" attributeName="x" from="440" to="440" fill="freeze" />
-    <animate attributeType="xml" begin="50000ms" dur="20000ms" attributeName="fill" from="rbg(0,0,255)" to="rbg(0,170,85)" fill="freeze" />
-    <animate attributeType="xml" begin="70000ms" dur="10000ms" attributeName="fill" from="rbg(0,170,85)" to="rbg(0,255,0)" fill="freeze" />
+    <animate attributeType="xml" begin="6666ms" dur="10000ms" attributeName="y" from="70" to="250" fill="freeze" />
+    <animate attributeType="xml" begin="6666ms" dur="10000ms" attributeName="x" from="440" to="440" fill="freeze" />
+    <animate attributeType="xml" begin="16666ms" dur="6667ms" attributeName="y" from="250" to="370" fill="freeze" />
+    <animate attributeType="xml" begin="16666ms" dur="6667ms" attributeName="x" from="440" to="440" fill="freeze" />
+    <animate attributeType="xml" begin="16666ms" dur="6667ms" attributeName="fill" from="rbg(0,0,255)" to="rbg(0,170,85)" fill="freeze" />
+    <animate attributeType="xml" begin="23333ms" dur="3333ms" attributeName="fill" from="rbg(0,170,85)" to="rbg(0,255,0)" fill="freeze" />
 </ellipse>
 
 </svg>

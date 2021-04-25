@@ -48,7 +48,7 @@ public class GraphicsView extends JPanel implements ActionListener {
   @Override
   public void paintComponent(Graphics g) {
     super.paintComponent(g);
-    System.out.println("in paintComp at time = " + time);
+    //System.out.println("in paintComp at time = " + time);
 
     Frame currentFrame = frames.get(time);
     List<Shape> shapes = currentFrame.getAllShapes();
@@ -64,10 +64,10 @@ public class GraphicsView extends JPanel implements ActionListener {
         g2d.fillOval(
                 shape.getXCoordinate(), shape.getYCoordinate(), shape.getWidth(), shape.getHeight());
       }
-      System.out.printf("Shape:%s X:%d Y:%d Color[%d,%d,%d] Width:%d Height:%d%n",
-              shape.getDescriptor(), shape.getXCoordinate(), shape.getYCoordinate(),
-              shape.getColor()[0],shape.getColor()[1],shape.getColor()[2],
-              shape.getWidth(), shape.getHeight());
+//      System.out.printf("Shape:%s X:%d Y:%d Color[%d,%d,%d] Width:%d Height:%d%n",
+//              shape.getDescriptor(), shape.getXCoordinate(), shape.getYCoordinate(),
+//              shape.getColor()[0],shape.getColor()[1],shape.getColor()[2],
+//              shape.getWidth(), shape.getHeight());
     }
   }
 

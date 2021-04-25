@@ -104,17 +104,42 @@ public class Builder implements AnimationBuilder<AnimationModel> {
       }
     }
     // perform the moves on the model data for the data that changed
+    int moved = 0;
+    int colored = 0;
+    int wider = 0;
     if ((x1 != x2 || y1 != y2)) {
       model.shapeMove(alias, x1, y1, x2, y2, t1, t2);
+      alias.initializeShape(x2,y2,r1,g1,b1,h1,w1);
+      moved = 1;
     }
     if (r1 != r2 || g1 != g2 || b1 != b2) {
       model.changeColor(alias, r1, g1, b1, r2, g2, b2, t1, t2);
+      colored = 1;
+      if (moved == 1) {
+        alias.initializeShape(x2,y2,r2,g2,b2,h1,w1);
+      } else {
+        alias.initializeShape(x1,y1,r1,g1,b1,h1,w1);
+      }
     }
     if (w1 != w2) {
       model.changeWidth(alias, w1, w2, t1, t2);
+      wider = 1;
+      if (colored == 1 && moved == 1) {
+        alias.initializeShape(x2,y2,r2,g2,b2,h1,w2);
+      }
+      if (colored == 0 && moved == 1) {
+        alias.initializeShape(x2,y2,r1,g1,b1,h1,w2);
+      }
+      if (colored == 1 && moved == 0) {
+        alias.initializeShape(x1,y1,r2,g2,b2,h1,w2);
+      }
     }
     if (h1 != h2) {
       model.changeHeight(alias, h1, h2, t1, t2);
+    }
+    if (x1 == x2 && y1 == y2 && r1 == r2 && g1 == g2 && b1 == b2 && w1 == w2 && h1 == h2) {
+      alias.initializeShape(x1,y1,r1,g1,b1,h1,w1);
+      model.addShapeToFrames(alias, t1, t2); // add it to the frames
     }
     return this;
   }

@@ -38,7 +38,7 @@ public class PlaybackView extends JPanel implements ActionListener {
   @Override
   public void paintComponent(Graphics g) {
     super.paintComponent(g);
-    System.out.println("in paintComp at time = " + time);
+    //System.out.println("in paintComp at time = " + time);
 
     Frame currentFrame = frames.get(time);
     java.util.List<cs5004.animator.model.Shape> shapes = currentFrame.getAllShapes();
@@ -54,10 +54,10 @@ public class PlaybackView extends JPanel implements ActionListener {
         g2d.fillOval(
                 shape.getXCoordinate(), shape.getYCoordinate(), shape.getWidth(), shape.getHeight());
       }
-      System.out.printf("Shape:%s X:%d Y:%d Color[%d,%d,%d] Width:%d Height:%d%n",
-              shape.getDescriptor(), shape.getXCoordinate(), shape.getYCoordinate(),
-              shape.getColor()[0],shape.getColor()[1],shape.getColor()[2],
-              shape.getWidth(), shape.getHeight());
+//      System.out.printf("Shape:%s X:%d Y:%d Color[%d,%d,%d] Width:%d Height:%d%n",
+//              shape.getDescriptor(), shape.getXCoordinate(), shape.getYCoordinate(),
+//              shape.getColor()[0],shape.getColor()[1],shape.getColor()[2],
+//              shape.getWidth(), shape.getHeight());
     }
     if (time == frames.size()-1 && loop) {
       this.rewind();
@@ -120,10 +120,7 @@ public class PlaybackView extends JPanel implements ActionListener {
   }
 
   /**
-   * Signify to the Controller that we want to loop through the animation when it is completed. The
-   * time limit is 50. The method will also make the former frame close;
-   *
-   * @param frame CompositeFrame to be closed once the next loop starts.
+   * Signify to the Controller that we want to loop through the animation when it is completed.
    */
   public void loop() {
     if (loop) { // if loop is currently on, we must turn it off
