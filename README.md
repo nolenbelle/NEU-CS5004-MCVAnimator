@@ -42,4 +42,10 @@ Design Aspects:
   a button should be the purview of the controller. So the model data is given to the view, the view displays buttons and the animation of the data, when a button is
   called, the controller tells the view how to change the display and tada.
   
+  
+  Known Bugs:
+  - SVG initializes the values of the shape with their final values. This issues comes from somewhere in the model where the data is being stored 
+    in the field List<Shapes> shape. This leads so some animation issues where it just isn't quite right.
+  - The two visual views both have some  sizing issues where ideally it would set the frame sizes better
+  - We didn't account for the offset values of the positioning.
 
