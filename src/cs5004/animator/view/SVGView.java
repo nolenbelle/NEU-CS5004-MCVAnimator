@@ -337,14 +337,4 @@ public class SVGView implements AnimationView {
             + "from=\"%s\" to=\"%s\" fill=\"freeze\" />", t1, duration,
             attribute, from, to);
   }
-
-  @Override
-  public void paintComponent(Graphics g) {
-    throw new UnsupportedOperationException("This method is not meant for this implementation.");
-  }
-
-  @Override
-  public void actionPerformed(ActionEvent e) {
-    throw new UnsupportedOperationException("This method is not meant for this implementation.");
-  }
 }

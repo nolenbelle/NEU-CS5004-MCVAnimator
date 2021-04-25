@@ -15,8 +15,7 @@ import cs5004.animator.model.AnimationModel;
 import cs5004.animator.util.Builder;
 import cs5004.animator.view.AnimationView;
 import cs5004.animator.view.CompositeFrame;
-//import cs5004.animator.view.GraphicsView;
-import cs5004.animator.view.GraphicsViewBeta;
+import cs5004.animator.view.GraphicsView;
 import cs5004.animator.view.MyFrame;
 import cs5004.animator.view.PlaybackView;
 import cs5004.animator.view.SVGView;
@@ -38,10 +37,10 @@ public final class EasyAnimator {
   public static AnimationView viewFactory(String type) {
     // The assignment says to have this
     if (type.equals("visual")) {
-      //return new GraphicsViewBeta();
+      return new MyFrame();
     }
     if (type.equals("playback")) {
-      return new PlaybackView();
+      return new CompositeFrame();
     }
     if (type.equals("svg")) {
       //System.out.println("svg passed");
@@ -115,7 +114,8 @@ public final class EasyAnimator {
     }
     if (viewType.equals("visual")) {
       // play the JFrames visual
-      new MyFrame(model.getEventLog(), speed, model.getFrames());
+      AnimationView viewFrame = new MyFrame(model.getFrames(), speed);
+      viewFrame.paintComponents(model.getEventLog(),speed,output);
     } if (viewType.equals("text") || viewType.equals("svg")) { // that the SVG & textual frames
       view.paintComponents(model.getEventLog(), speed, output);
     }

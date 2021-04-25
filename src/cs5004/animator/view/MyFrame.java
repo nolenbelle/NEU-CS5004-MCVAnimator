@@ -1,6 +1,7 @@
 package cs5004.animator.view;
 
 import java.awt.Dimension;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -12,24 +13,20 @@ import cs5004.animator.model.Frame;
 /**
  * This will be used to call GraphicsView through.
  */
-public class MyFrame extends JFrame {
-  private GraphicsViewBeta visual;
+public class MyFrame extends JFrame implements AnimationView{
+  private GraphicsView visual;
 
   /**
    * Constructor of the frame to animate in.
-   * @param eventLog model event log
+   * @param frames model event log
    * @param speed speed of play
    */
-  public MyFrame(List<String> eventLog, int speed, List<Frame> frames) {
-    List<Integer> sizes = this.getCanvasSize(eventLog);
-    int width = sizes.get(2) + sizes.get(0);
-    int height = sizes.get(3) + sizes.get(1);
-    //this.setSize(new Dimension(width,height));
-    this.setSize(new Dimension(1000,1000));
-    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    visual = new GraphicsViewBeta(frames, speed);
-    this.add(visual);
-    this.setVisible(true);
+  public MyFrame(List<Frame> frames, int speed) {
+    visual = new GraphicsView(frames, speed);
+  }
+
+  public MyFrame(){
+
   }
 
   /**
@@ -52,4 +49,17 @@ public class MyFrame extends JFrame {
     return sizeData;
   }
 
+  @Override
+  public void paintComponents(List<String> eventLog, int time, String outPut) throws IOException {
+    List<Integer> sizes = this.getCanvasSize(eventLog);
+    int width = sizes.get(2) + sizes.get(0);
+    int height = sizes.get(3) + sizes.get(1);
+    //this.setSize(new Dimension(width,height));
+    this.setSize(new Dimension(1000,1000));
+
+    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    this.add(visual);
+    this.setVisible(true);
+
+  }
 }

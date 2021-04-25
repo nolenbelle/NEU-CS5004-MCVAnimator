@@ -1,5 +1,6 @@
 package cs5004.animator.view;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.swing.JFrame;
@@ -11,7 +12,7 @@ import cs5004.animator.controller.AnimationController;
 /**
  * JFrame class to contain the composite view PlaybackView & PlaybackUI.
  */
-public class CompositeFrame extends JFrame {
+public class CompositeFrame extends JFrame implements AnimationView {
   private PlaybackView view; // can't be AnimationView interface type bc we need it to be a JPanel
   private PlaybackUI ui; // the options for the user
   private int speed;
@@ -34,6 +35,10 @@ public class CompositeFrame extends JFrame {
     container.add(ui); // bottom
 
     this.add(container);
+  }
+
+  public CompositeFrame() {
+
   }
 
   /**
@@ -62,5 +67,10 @@ public class CompositeFrame extends JFrame {
    */
   public PlaybackView getPlayback() { // this is a place of not great coupling
     return view;
+  }
+
+  @Override
+  public void paintComponents(List<String> eventLog, int time, String outPut) throws IOException {
+
   }
 }

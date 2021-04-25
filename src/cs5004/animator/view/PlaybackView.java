@@ -11,6 +11,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,7 +27,7 @@ import javax.swing.JFrame;
  * Representation of an animation using java Graphics. Implements the AnimationView. Extends
  * JPanel.
  */
-public class PlaybackView extends JPanel implements AnimationView {
+public class PlaybackView extends JPanel implements ActionListener {
 
   private List<String> shapes = new ArrayList<>();
   private List<String> events = new ArrayList<>();
@@ -91,19 +92,6 @@ public class PlaybackView extends JPanel implements AnimationView {
 //                shape.getXCoordinate(), shape.getYCoordinate(), shape.getWidth(), shape.getHeight());
 //      }
     }
-  }
-
-  /**
-   * This method is not used by this type of view. If called, it will cause an IOException.
-   *
-   * @param eventLog
-   * @param time
-   * @param outPut
-   * @throws IOException
-   */
-  @Override
-  public void paintComponents(List<String> eventLog, int time, String outPut) throws IOException {
-    throw new UnsupportedOperationException("This method is not meant for this implementation.");
   }
 
   /**
