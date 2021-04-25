@@ -54,7 +54,7 @@ public class MyFrame extends JFrame implements AnimationView{
     int width = sizes.get(2) + sizes.get(0);
     int height = sizes.get(3) + sizes.get(1);
     //this.setSize(new Dimension(width,height));
-    this.setSize(new Dimension(1000,1000));
+    this.setSize(new Dimension(width,height));
 
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.add(visual);

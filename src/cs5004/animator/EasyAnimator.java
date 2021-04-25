@@ -7,17 +7,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import javax.swing.JFrame;
-
 import cs5004.animator.controller.AnimationController;
 import cs5004.animator.controller.AnimationControllerImpl;
 import cs5004.animator.model.AnimationModel;
 import cs5004.animator.util.Builder;
 import cs5004.animator.view.AnimationView;
 import cs5004.animator.view.CompositeFrame;
-import cs5004.animator.view.GraphicsView;
 import cs5004.animator.view.MyFrame;
-import cs5004.animator.view.PlaybackView;
 import cs5004.animator.view.SVGView;
 import cs5004.animator.view.TextualView;
 
@@ -106,17 +102,13 @@ public final class EasyAnimator {
       CompositeFrame viewFrame = new CompositeFrame(model.getFrames(), speed);
       AnimationController controller = new AnimationControllerImpl(model, viewFrame);
       viewFrame.setListener(controller);
-
-      //start up the animation here
-      viewFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-      viewFrame.setSize(1000,1000);
-      viewFrame.setVisible(true);
+      viewFrame.paintComponents(model.getEventLog(),speed,output);
     }
     if (viewType.equals("visual")) {
       // play the JFrames visual
       AnimationView viewFrame = new MyFrame(model.getFrames(), speed);
       viewFrame.paintComponents(model.getEventLog(),speed,output);
-    } if (viewType.equals("text") || viewType.equals("svg")) { // that the SVG & textual frames
+    } if (viewType.equals("text") || viewType.equals("svg")) { // play the SVG & textual frames
       view.paintComponents(model.getEventLog(), speed, output);
     }
   }
