@@ -125,23 +125,6 @@ public class AnimationModelImpl implements AnimationModel {
     // ~canvas must have been initialized with setCanvas or else an exception will be thrown here
     // post A06, now handling the canvas parameters from the read files~
 
-    // I think we technically dont need to check that we are within the canvas
-    // because the view can decide to just not show it?
-    /*if (toX > maxX) {
-      throw new IllegalArgumentException(String.format("toX: %d is larger than width", toX));
-    }
-    if (toY > maxY) {
-      throw new IllegalArgumentException(String.format("toY: %d is larger than height", toY));
-    }
-    if (fromX > maxX) {
-      throw new IllegalArgumentException(String.format("FromX: %d is larger than width", fromX));
-    }
-    if (fromY > maxY) {
-      throw new IllegalArgumentException(String.format("FromY: %d is larger than width", fromY));
-    }
-    if (toX < minX || toY < minY || fromX < minX || fromY < minY) {
-      throw new IllegalArgumentException("Coordinates cannot lower than minimum values of canvas");
-    }*/
     if (fromFrame >= toFrame) {
       throw new IllegalArgumentException(
               "toFrame must be larger than fromFrame");

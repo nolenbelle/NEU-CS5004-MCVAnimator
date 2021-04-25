@@ -43,7 +43,7 @@ public class AnimationControllerImpl implements ActionListener, AnimationControl
     }
     if (e.getActionCommand().equals("loop")) {
       ui.clickLoop();
-      view.loop(viewFrame);
+      view.loop();
     }
     if (e.getActionCommand().equals("faster")) {
       view.faster();

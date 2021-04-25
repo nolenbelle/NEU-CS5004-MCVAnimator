@@ -23,7 +23,7 @@ public class PlaybackView extends JPanel implements ActionListener {
     int delay = 1000 / speed; // so a speed of 2 has half the delay time between timer clicks
     timer = new Timer(delay, this);
     timer.setInitialDelay(0); // start playing right away.
-
+    loop= false;
     timer.start();
     repaint();
   }
@@ -58,6 +58,9 @@ public class PlaybackView extends JPanel implements ActionListener {
               shape.getDescriptor(), shape.getXCoordinate(), shape.getYCoordinate(),
               shape.getColor()[0],shape.getColor()[1],shape.getColor()[2],
               shape.getWidth(), shape.getHeight());
+    }
+    if (time == frames.size()-1 && loop) {
+      this.rewind();
     }
   }
 
@@ -122,9 +125,11 @@ public class PlaybackView extends JPanel implements ActionListener {
    *
    * @param frame CompositeFrame to be closed once the next loop starts.
    */
-  public void loop(CompositeFrame frame) {
+  public void loop() {
     if (loop) { // if loop is currently on, we must turn it off
       loop = false;
+    } else {
+      loop = true;
     }
   }
 }
