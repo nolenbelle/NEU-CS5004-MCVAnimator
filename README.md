@@ -14,7 +14,7 @@ The AnimationModelImpl has a List of Frames as it's field. This is basically lik
 
 Output:
 The AnimationModelImpl also has a field 'eventLog'. As any shape is added or mutated, that action is recorded in the eventLog and the textual representation of the animation is the result of printing that log.
-There is a main method in the Demo class which will print out an example of the textual representation.
+The list of frames and the list of Strings are the two ways that the model format data for views.
 
 
 View Over'view':
