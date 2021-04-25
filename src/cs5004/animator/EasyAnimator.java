@@ -15,7 +15,8 @@ import cs5004.animator.model.AnimationModel;
 import cs5004.animator.util.Builder;
 import cs5004.animator.view.AnimationView;
 import cs5004.animator.view.CompositeFrame;
-import cs5004.animator.view.GraphicsView;
+//import cs5004.animator.view.GraphicsView;
+import cs5004.animator.view.GraphicsViewBeta;
 import cs5004.animator.view.MyFrame;
 import cs5004.animator.view.PlaybackView;
 import cs5004.animator.view.SVGView;
@@ -37,7 +38,7 @@ public final class EasyAnimator {
   public static AnimationView viewFactory(String type) {
     // The assignment says to have this
     if (type.equals("visual")) {
-      return new GraphicsView();
+      //return new GraphicsViewBeta();
     }
     if (type.equals("playback")) {
       return new PlaybackView();

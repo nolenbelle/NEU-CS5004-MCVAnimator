@@ -13,7 +13,7 @@ import cs5004.animator.model.Frame;
  * This will be used to call GraphicsView through.
  */
 public class MyFrame extends JFrame {
-  private GraphicsView graphicsView = new GraphicsView();
+  private GraphicsViewBeta visual;
 
   /**
    * Constructor of the frame to animate in.
@@ -27,18 +27,8 @@ public class MyFrame extends JFrame {
     //this.setSize(new Dimension(width,height));
     this.setSize(new Dimension(1000,1000));
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    GraphicsViewBeta visual = new GraphicsViewBeta(frames, speed);
+    visual = new GraphicsViewBeta(frames, speed);
     this.add(visual);
-    this.setVisible(true);
-  }
-
-  /**
-   * Default constructor.
-   */
-  public MyFrame() {
-    this.setSize(new Dimension(1000,1000));
-    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    this.add(graphicsView);
     this.setVisible(true);
   }
 

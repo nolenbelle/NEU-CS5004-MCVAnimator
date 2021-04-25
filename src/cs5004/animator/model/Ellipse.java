@@ -20,6 +20,7 @@ public class Ellipse extends AbstractShape {
    */
   public Ellipse(int x, int y, int width, int height, int r, int g, int b, String descriptor) {
     super(x, y, width, height, r, g, b, descriptor);
+    //super.setType("ellipse");
   }
 
   /**
@@ -29,30 +30,6 @@ public class Ellipse extends AbstractShape {
    */
   public Ellipse( String descriptor) {
     super(descriptor);
-  }
-
-  /**
-   * Create a copy of a Shape.
-   *
-   * @return Copy of this Shape.
-   */
-  @Override
-  public Shape copy() {
-    Shape copy =
-        new Ellipse(
-            super.getXCoordinate(),
-            super.getYCoordinate(),
-            super.getWidth(),
-            super.getHeight(),
-            super.getColor()[0],
-            super.getColor()[1],
-            super.getColor()[2],
-            super.getDescriptor());
-    return copy;
-  }
-
-  public String getType(){
-    return this.type;
   }
 
   @Override
@@ -68,5 +45,30 @@ public class Ellipse extends AbstractShape {
             this.getColor()[0],
             this.getColor()[1],
             this.getColor()[2]);
+  }
+
+  @Override
+  public String getType() {
+    return type;
+  }
+
+  /**
+   * Create a copy of a Shape.
+   *
+   * @return Copy of this Shape.
+   */
+  @Override
+  public Shape copy() {
+    Shape copy =
+            new Ellipse(
+                    super.getXCoordinate(),
+                    super.getYCoordinate(),
+                    super.getWidth(),
+                    super.getHeight(),
+                    super.getColor()[0],
+                    super.getColor()[1],
+                    super.getColor()[2],
+                    super.getDescriptor());
+    return copy;
   }
 }

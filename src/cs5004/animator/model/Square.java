@@ -2,6 +2,13 @@ package cs5004.animator.model;
 
 /** Represent a Rectangle. A specific form of an AbstractShape. */
 public class Square extends Rectangle {
+  private String descriptor;
+  private int[] color = new int[3]; // [RED , GREEN , BLUE])
+  private int x; // x-coordinate of the center point of shape
+  private int y; // y-coordinate of the center point of shape
+  private int width;
+  private int height;
+  //private final String type = "rectangle";
 
   /**
    * Construct a Square using an x/y point on the Square, the length of the Square, the RGB color of

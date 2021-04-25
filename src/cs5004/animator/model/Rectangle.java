@@ -2,7 +2,7 @@ package cs5004.animator.model;
 
 /** Represent a Rectangle. A specific form of an AbstractShape. */
 public class Rectangle extends AbstractShape {
-  private String type = "rectangle";
+  private final String type = "rectangle";
 
   /**
    * Construct a Rectangle using an x/y point on the Rectangle, the width of the Rectangle, the
@@ -30,30 +30,6 @@ public class Rectangle extends AbstractShape {
     super(descriptor);
   }
 
-  public String getType(){
-    return this.type;
-  }
-
-  /**
-   * Create a copy of a Shape.
-   *
-   * @return Copy of this Shape.
-   */
-  @Override
-  public Shape copy() {
-    Shape copy =
-        new Rectangle(
-            super.getXCoordinate(),
-            super.getYCoordinate(),
-            super.getWidth(),
-            super.getHeight(),
-            super.getColor()[0],
-            super.getColor()[1],
-            super.getColor()[2],
-            super.getDescriptor());
-    return copy;
-  }
-
   /**
    * Return a human readable version of a Rectangle that contains all of the Rectangle's
    * information.
@@ -73,5 +49,30 @@ public class Rectangle extends AbstractShape {
         this.getColor()[0],
         this.getColor()[1],
         this.getColor()[2]);
+  }
+
+  @Override
+  public String getType() {
+    return type;
+  }
+
+  /**
+   * Create a copy of a Shape.
+   *
+   * @return Copy of this Shape.
+   */
+  @Override
+  public Shape copy() {
+    Shape copy =
+            new Rectangle(
+                    super.getXCoordinate(),
+                    super.getYCoordinate(),
+                    super.getWidth(),
+                    super.getHeight(),
+                    super.getColor()[0],
+                    super.getColor()[1],
+                    super.getColor()[2],
+                    super.getDescriptor());
+    return copy;
   }
 }

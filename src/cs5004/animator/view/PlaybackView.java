@@ -4,7 +4,6 @@ import cs5004.animator.controller.AnimationController;
 import cs5004.animator.controller.AnimationControllerImpl;
 import cs5004.animator.model.AnimationModel;
 import cs5004.animator.model.AnimationModelImpl;
-import cs5004.animator.model.Circle;
 import cs5004.animator.model.Ellipse;
 import cs5004.animator.model.Rectangle;
 import cs5004.animator.model.Shape;
@@ -86,11 +85,11 @@ public class PlaybackView extends JPanel implements AnimationView {
         g2d.fillRect(
                 shape.getXCoordinate(), shape.getYCoordinate(), shape.getWidth(), shape.getHeight());
       }
-      if (shape.getClass().equals(Circle.class)) {
-        g2d.setColor(new Color(shape.getColor()[0], shape.getColor()[1], shape.getColor()[2]));
-        g2d.fillOval(
-                shape.getXCoordinate(), shape.getYCoordinate(), shape.getWidth(), shape.getHeight());
-      }
+//      if (shape.getClass().equals(Circle.class)) {
+//        g2d.setColor(new Color(shape.getColor()[0], shape.getColor()[1], shape.getColor()[2]));
+//        g2d.fillOval(
+//                shape.getXCoordinate(), shape.getYCoordinate(), shape.getWidth(), shape.getHeight());
+//      }
     }
   }
 
@@ -199,17 +198,18 @@ public class PlaybackView extends JPanel implements AnimationView {
                         getEventStartTime(ev),
                         getEventEndTime(ev),
                         time);
-              } else if (shape.getClass().equals(Circle.class)) {
-                moveCircle(
-                        shape,
-                        oldX,
-                        oldY,
-                        newX,
-                        newY,
-                        getEventStartTime(ev),
-                        getEventEndTime(ev),
-                        time);
               }
+//              } else if (shape.getClass().equals(Circle.class)) {
+//                moveCircle(
+//                        shape,
+//                        oldX,
+//                        oldY,
+//                        newX,
+//                        newY,
+//                        getEventStartTime(ev),
+//                        getEventEndTime(ev),
+//                        time);
+//              }
             }
             if (ev.contains("changes color")) {
               int oldR = shape.getColor()[0];
@@ -232,19 +232,20 @@ public class PlaybackView extends JPanel implements AnimationView {
                         getEventStartTime(ev),
                         getEventEndTime(ev),
                         time);
-              } else if (shape.getClass().equals(Circle.class)) {
-                changeColorCircle(
-                        shape,
-                        oldR,
-                        oldG,
-                        oldB,
-                        newR,
-                        newG,
-                        newB,
-                        getEventStartTime(ev),
-                        getEventEndTime(ev),
-                        time);
               }
+//              } else if (shape.getClass().equals(Circle.class)) {
+//                changeColorCircle(
+//                        shape,
+//                        oldR,
+//                        oldG,
+//                        oldB,
+//                        newR,
+//                        newG,
+//                        newB,
+//                        getEventStartTime(ev),
+//                        getEventEndTime(ev),
+//                        time);
+//              }
             }
 
             if (ev.contains("width")) {
@@ -254,10 +255,10 @@ public class PlaybackView extends JPanel implements AnimationView {
                       || shape.getClass().equals(Ellipse.class)) {
                 changeWidthRectangle(
                         shape, oldW, newW, getEventStartTime(ev), getEventEndTime(ev), time);
-              } else if (shape.getClass().equals(Circle.class)) {
-                changeWidthCircle(
-                        shape, oldW, newW, getEventStartTime(ev), getEventEndTime(ev), time);
-              }
+              } //else if (shape.getClass().equals(Circle.class)) {
+//                changeWidthCircle(
+//                        shape, oldW, newW, getEventStartTime(ev), getEventEndTime(ev), time);
+//              }
             }
 
             if (ev.contains("height")) {
@@ -267,10 +268,10 @@ public class PlaybackView extends JPanel implements AnimationView {
                       || shape.getClass().equals(Ellipse.class)) {
                 changeHeightRectangle(
                         shape, oldH, newH, getEventStartTime(ev), getEventEndTime(ev), time);
-              } else if (shape.getClass().equals(Circle.class)) {
-                changeHeightCircle(
-                        shape, oldH, newH, getEventStartTime(ev), getEventEndTime(ev), time);
-              }
+              } //else if (shape.getClass().equals(Circle.class)) {
+//                changeHeightCircle(
+//                        shape, oldH, newH, getEventStartTime(ev), getEventEndTime(ev), time);
+//              }
             }
           }
         }
@@ -352,17 +353,17 @@ public class PlaybackView extends JPanel implements AnimationView {
     double nextX = tweening((double) oldX, (double) newX, start, end, time);
     double nextY = tweening((double) oldY, (double) newY, start, end, time);
 
-    Circle c =
-            new Circle(
-                    (int) nextX,
-                    (int) nextY,
-                    shape.getWidth(),
-                    shape.getColor()[0],
-                    shape.getColor()[1],
-                    shape.getColor()[2],
-                    shape.getDescriptor());
-    nameToShape.put(shape.getDescriptor(), c);
-    repaint();
+//    Circle c =
+//            new Circle(
+//                    (int) nextX,
+//                    (int) nextY,
+//                    shape.getWidth(),
+//                    shape.getColor()[0],
+//                    shape.getColor()[1],
+//                    shape.getColor()[2],
+//                    shape.getDescriptor());
+//    nameToShape.put(shape.getDescriptor(), c);
+//    repaint();
   }
 
   /**
@@ -469,16 +470,16 @@ public class PlaybackView extends JPanel implements AnimationView {
     if (nextB > 255) {
       nextB = 255;
     }
-    Circle c =
-            new Circle(
-                    shape.getXCoordinate(),
-                    shape.getYCoordinate(),
-                    shape.getWidth(),
-                    (int) nextR,
-                    (int) nextG,
-                    (int) nextB,
-                    shape.getDescriptor());
-    nameToShape.put(shape.getDescriptor(), c);
+//    Circle c =
+//            new Circle(
+//                    shape.getXCoordinate(),
+//                    shape.getYCoordinate(),
+//                    shape.getWidth(),
+//                    (int) nextR,
+//                    (int) nextG,
+//                    (int) nextB,
+//                    shape.getDescriptor());
+//    nameToShape.put(shape.getDescriptor(), c);
     repaint();
   }
 
@@ -566,59 +567,59 @@ public class PlaybackView extends JPanel implements AnimationView {
     repaint();
   }
 
-  /**
-   * Change the width of a Circle. The width of a Circle corresponds to its diameter. Width is
-   * changed using tweening, and repainted every time the time changes in the animation.
-   *
-   * @param shape Circle whose width/diameter is to be changed.
-   * @param oldD  Original width/diameter of the Circle.
-   * @param newD  New width/diameter of the Circle.
-   * @param start Time at which the Circle starts to change width/diameter.
-   * @param end   Time at which the Circle reaches its desired width/diameter.
-   * @param time  Current time of the animation.
-   */
-  protected void changeWidthCircle(Shape shape, int oldD, int newD, double start, double end,
-                                   double time) {
-    double nextD = tweening((double) oldD, (double) newD, start, end, time);
-    Circle r =
-            new Circle(
-                    shape.getXCoordinate(),
-                    shape.getYCoordinate(),
-                    (int) nextD,
-                    shape.getColor()[0],
-                    shape.getColor()[1],
-                    shape.getColor()[2],
-                    shape.getDescriptor());
-    nameToShape.put(shape.getDescriptor(), r);
-    repaint();
-  }
+//  /**
+//   * Change the width of a Circle. The width of a Circle corresponds to its diameter. Width is
+//   * changed using tweening, and repainted every time the time changes in the animation.
+//   *
+//   * @param shape Circle whose width/diameter is to be changed.
+//   * @param oldD  Original width/diameter of the Circle.
+//   * @param newD  New width/diameter of the Circle.
+//   * @param start Time at which the Circle starts to change width/diameter.
+//   * @param end   Time at which the Circle reaches its desired width/diameter.
+//   * @param time  Current time of the animation.
+//   */
+//  protected void changeWidthCircle(Shape shape, int oldD, int newD, double start, double end,
+//                                   double time) {
+//    double nextD = tweening((double) oldD, (double) newD, start, end, time);
+//    Circle r =
+//            new Circle(
+//                    shape.getXCoordinate(),
+//                    shape.getYCoordinate(),
+//                    (int) nextD,
+//                    shape.getColor()[0],
+//                    shape.getColor()[1],
+//                    shape.getColor()[2],
+//                    shape.getDescriptor());
+//    nameToShape.put(shape.getDescriptor(), r);
+//    repaint();
+//  }
 
-  /**
-   * Change the height of a Circle. The height of a Circle corresponds to its diameter. Height is
-   * changed using tweening, and repainted every time the time changes in the animation.
-   *
-   * @param shape Cicrlce whose height/diameter is to be changed.
-   * @param oldD  Original height/diameter of the Circle.
-   * @param newD  New height/diameter of the Circle
-   * @param start Time at which the Circle starts to change height/diameter.
-   * @param end   Time at which the Circle reaches its desired height/diamter.
-   * @param time  Current time of the animation.
-   */
-  protected void changeHeightCircle(Shape shape, int oldD, int newD, double start, double end,
-                                    double time) {
-    double nextD = tweening((double) oldD, (double) newD, start, end, time);
-    Circle r =
-            new Circle(
-                    shape.getXCoordinate(),
-                    shape.getYCoordinate(),
-                    (int) nextD,
-                    shape.getColor()[0],
-                    shape.getColor()[1],
-                    shape.getColor()[2],
-                    shape.getDescriptor());
-    nameToShape.put(shape.getDescriptor(), r);
-    repaint();
-  }
+//  /**
+//   * Change the height of a Circle. The height of a Circle corresponds to its diameter. Height is
+//   * changed using tweening, and repainted every time the time changes in the animation.
+//   *
+//   * @param shape Cicrlce whose height/diameter is to be changed.
+//   * @param oldD  Original height/diameter of the Circle.
+//   * @param newD  New height/diameter of the Circle
+//   * @param start Time at which the Circle starts to change height/diameter.
+//   * @param end   Time at which the Circle reaches its desired height/diamter.
+//   * @param time  Current time of the animation.
+//   */
+//  protected void changeHeightCircle(Shape shape, int oldD, int newD, double start, double end,
+//                                    double time) {
+//    double nextD = tweening((double) oldD, (double) newD, start, end, time);
+//    Circle r =
+//            new Circle(
+//                    shape.getXCoordinate(),
+//                    shape.getYCoordinate(),
+//                    (int) nextD,
+//                    shape.getColor()[0],
+//                    shape.getColor()[1],
+//                    shape.getColor()[2],
+//                    shape.getDescriptor());
+//    nameToShape.put(shape.getDescriptor(), r);
+//    repaint();
+//  }
 
   /**
    * Get the time at which an event begins.
@@ -947,18 +948,18 @@ public class PlaybackView extends JPanel implements AnimationView {
                           getShapeName(item)));
 
         }
-        if (getShapeType(item).equals("Circle")) {
-          nameToShape.put(
-                  getShapeName(item),
-                  new Circle(
-                          getShapePoint(item)[0],
-                          getShapePoint(item)[1],
-                          getShapeDiameter(item),
-                          getShapeColorCircle(item)[0],
-                          getShapeColorCircle(item)[1],
-                          getShapeColorCircle(item)[2],
-                          getShapeName(item)));
-        }
+//        if (getShapeType(item).equals("Circle")) {
+//          nameToShape.put(
+//                  getShapeName(item),
+//                  new Circle(
+//                          getShapePoint(item)[0],
+//                          getShapePoint(item)[1],
+//                          getShapeDiameter(item),
+//                          getShapeColorCircle(item)[0],
+//                          getShapeColorCircle(item)[1],
+//                          getShapeColorCircle(item)[2],
+//                          getShapeName(item)));
+//        }
       }
 
       if (!(item.startsWith("Shapes")

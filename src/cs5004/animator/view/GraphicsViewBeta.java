@@ -29,15 +29,14 @@ public class GraphicsViewBeta extends JPanel implements AnimationView {
    */
   public GraphicsViewBeta(List<Frame> frames, int speed) {
     this.frames = frames;
-    //int delay = 1000 / speed; // so a speed of 2 has half the delay time between timer clicks
-    int delay = 100;
+    int delay = 1000 / speed; // so a speed of 2 has half the delay time between timer clicks
     this.setSize(new Dimension(1000,1000));
     timer = new Timer(delay, this);
     //timer.setInitialDelay(0); // start playing right away.
 
     this.setLayout(null);
     timer.start();
-    //repaint();
+    repaint();
   }
 
   /**
@@ -50,15 +49,14 @@ public class GraphicsViewBeta extends JPanel implements AnimationView {
   @Override
   public void paintComponent(Graphics g) {
     super.paintComponent(g);
-    //System.out.println("in paintComp at time = " + time);
+    System.out.println("in paintComp at time = " + time);
 
     Frame currentFrame = frames.get(time);
     List<Shape> shapes = currentFrame.getAllShapes();
 
     Graphics2D g2d = (Graphics2D) g;
     for (Shape shape : shapes) {
-//      System.out.println(shape.toString());
-//      System.out.println("Type: " + shape.getType());
+      //System.out.println(shape.getType());
       g2d.setColor(new Color(shape.getColor()[0], shape.getColor()[1], shape.getColor()[2]));
       if (shape.getType().equals("rectangle")) {
         g2d.fillRect(
@@ -68,10 +66,10 @@ public class GraphicsViewBeta extends JPanel implements AnimationView {
         g2d.fillOval(
                 shape.getXCoordinate(), shape.getYCoordinate(), shape.getWidth(), shape.getHeight());
       }
-//      System.out.printf("Shape:%s X:%d Y:%d Color[%d,%d,%d] Width:%d Height:%d%n",
-//              shape.getDescriptor(), shape.getXCoordinate(), shape.getYCoordinate(),
-//              shape.getColor()[0],shape.getColor()[1],shape.getColor()[2],
-//              shape.getWidth(), shape.getHeight());
+      System.out.printf("Shape:%s X:%d Y:%d Color[%d,%d,%d] Width:%d Height:%d%n",
+              shape.getDescriptor(), shape.getXCoordinate(), shape.getYCoordinate(),
+              shape.getColor()[0],shape.getColor()[1],shape.getColor()[2],
+              shape.getWidth(), shape.getHeight());
     }
   }
 
@@ -87,8 +85,8 @@ public class GraphicsViewBeta extends JPanel implements AnimationView {
    */
   @Override
   public void actionPerformed(ActionEvent e) {
-    if(time < 100) {
-      time++;
+    time++;
+    if (time < frames.size()) {
       repaint();
     }
   }

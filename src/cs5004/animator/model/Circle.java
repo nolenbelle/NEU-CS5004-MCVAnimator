@@ -2,7 +2,12 @@ package cs5004.animator.model;
 
 /** Represent a Circle. A specific form of an AbstractShape. */
 public class Circle extends AbstractShape {
-
+  private String descriptor;
+  private int[] color = new int[3]; // [RED , GREEN , BLUE])
+  private int x; // x-coordinate of the center point of shape
+  private int y; // y-coordinate of the center point of shape
+  private int width;
+  private int height;
 
   /**
    * Construct a Circle using an x/y point on the Circle, the diameter of the Circle, the RGB color
