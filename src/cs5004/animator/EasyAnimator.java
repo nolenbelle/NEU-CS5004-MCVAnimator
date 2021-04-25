@@ -103,7 +103,7 @@ public final class EasyAnimator {
     AnimationView view = viewFactory(viewType);
 
     if (viewType.equals("playback")) {
-      CompositeFrame viewFrame = new CompositeFrame(model.getEventLog(), speed);
+      CompositeFrame viewFrame = new CompositeFrame(model.getFrames(), speed);
       AnimationController controller = new AnimationControllerImpl(model, viewFrame);
       viewFrame.setListener(controller);
 

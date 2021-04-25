@@ -1,5 +1,6 @@
 package cs5004.animator.view;
 
+import java.awt.*;
 import java.io.IOException;
 import java.util.List;
 
@@ -8,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.BoxLayout;
 
 import cs5004.animator.controller.AnimationController;
+import cs5004.animator.model.Frame;
 
 /**
  * JFrame class to contain the composite view PlaybackView & PlaybackUI.
@@ -19,15 +21,15 @@ public class CompositeFrame extends JFrame implements AnimationView {
 
   /**
    * Constructor of the frame to animate in.
-   * @param eventLog model event log
+   * @param frames model event log
    * @param speed speed of play
    */
-  public CompositeFrame(List<String> eventLog, int speed) {
+  public CompositeFrame(List<Frame> frames, int speed) {
     this.speed = 1000;
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     JPanel container = new JPanel();
     container.setLayout(new BoxLayout(container, BoxLayout.Y_AXIS)); // stack  our panels
-    view = new PlaybackView(eventLog, speed); // call however we need to call the new view
+    view = new PlaybackView(frames, speed); // call however we need to call the new view
     ui = new PlaybackUI();
 
 

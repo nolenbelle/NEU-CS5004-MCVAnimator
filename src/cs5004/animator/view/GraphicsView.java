@@ -17,8 +17,8 @@ import cs5004.animator.model.Shape;
  * Representation of an animation using java Graphics. Implements the AnimationView. Extends JPanel.
  */
 public class GraphicsView extends JPanel implements ActionListener {
-  private Timer timer;
-  private int time = 0;
+  Timer timer;
+  int time = 0;
   private final List<Frame> frames;
 
   /**

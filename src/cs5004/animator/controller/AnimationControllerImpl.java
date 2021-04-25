@@ -53,7 +53,6 @@ public class AnimationControllerImpl implements ActionListener, AnimationControl
     }
     if (e.getActionCommand().equals("rewind")) { // restart
       view.rewind();
-      viewFrame.dispose();
     }
   }
 }
