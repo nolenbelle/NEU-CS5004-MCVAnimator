@@ -53,7 +53,7 @@ public class AnimationModelImpl implements AnimationModel {
     }
     if (found == -1) { // if it is not, add it
       this.shapes.add(shape);
-    } else { // if it is, update it with the newly added shape
+    } else if (shape.getWidth() == -1){ // if it is, update it with the newly added shape
       this.shapes.remove(found);
       this.shapes.add(found,shape);
     }
@@ -69,20 +69,7 @@ public class AnimationModelImpl implements AnimationModel {
    */
   @Override
   public void addShapeToFrames(Shape shape, int fromFrame, int toFrame) {
-    // check that the shape was added in the builder first
-    // this couples this implementation to the AnimationReader & builder
-    // but it would be simple to make a more generic implementation for a different input
-    int check = 1;
-    for (Shape s : this.shapes) {
-      if (s.getDescriptor().equals(shape.getDescriptor())) {
-        check = 0;
-      }
-    }
-    if (check == 1) {
-      this.addShapeToLog(shape);
-    }
 
-    // add the new shape to the shape section of the event log
     // change from assignment 6:
     // changed from creating a default amount of frames to always just adding
     // the frames as we need them for the exact amount
@@ -167,8 +154,6 @@ public class AnimationModelImpl implements AnimationModel {
   public void changeColor(Shape shape, int r1, int g1, int b1, int r2, int g2, int b2,
                           int fromFrame, int toFrame)
           throws IllegalArgumentException {
-    System.out.println(String.format("Color change on %s from (%d,%d,%d) to (%d,%d,%d) from %d-%d",
-            shape.getDescriptor(), r1,g1,b1,r2,g2,b2,fromFrame,toFrame));
     if (r1 < 0 || g1 < 0 || b1 < 0 || r1 > 255 || g1 > 255 || b1 > 255
             || r2 < 0 || g2 < 0 || b2 < 0 || r2 > 255 || g2 > 255 || b2 > 255) {
       throw new IllegalArgumentException("All r,g,b values must be at least 0 and at most 255.");

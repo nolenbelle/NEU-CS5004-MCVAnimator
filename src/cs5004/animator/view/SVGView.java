@@ -1,7 +1,5 @@
 package cs5004.animator.view;
 
-import java.awt.Graphics;
-import java.awt.event.ActionEvent;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;

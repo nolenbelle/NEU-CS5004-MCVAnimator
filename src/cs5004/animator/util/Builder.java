@@ -106,7 +106,6 @@ public class Builder implements AnimationBuilder<AnimationModel> {
     // perform the moves on the model data for the data that changed
     int moved = 0;
     int colored = 0;
-    int wider = 0;
     if ((x1 != x2 || y1 != y2)) {
       model.shapeMove(alias, x1, y1, x2, y2, t1, t2);
       alias.initializeShape(x2,y2,r1,g1,b1,h1,w1);
@@ -123,7 +122,6 @@ public class Builder implements AnimationBuilder<AnimationModel> {
     }
     if (w1 != w2) {
       model.changeWidth(alias, w1, w2, t1, t2);
-      wider = 1;
       if (colored == 1 && moved == 1) {
         alias.initializeShape(x2,y2,r2,g2,b2,h1,w2);
       }
